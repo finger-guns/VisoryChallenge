@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  wii:
+    build:
+      context: ./visory/
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8000
+    volumes:
+      - ./visory/:/app
+      - ./visory/tmp:/app/tmp
+    environment:
+      REDIS_HOST: message_broker
+      TICKETMASTER_API_KEY: "jK5aOMsBK0BLubKKx9oorGJH3vGGPaup"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  whereisitfrontend:
+    build:
+      context: ./frontend/
+      dockerfile: Dockerfile
+    ports:
+      - 5173:5173
+    volumes:
+      - ./frontend/vis-frontend/:/usr/src/app
+      - /usr/src/app/node_modules
