@@ -34,3 +34,6 @@ Good luck!
 ```sh
 docker compose up
 ```
+open up firefox or chrome - probably not safari or ie or edge.
+
+`http://localhost:5173`
