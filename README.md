@@ -37,3 +37,9 @@ docker compose up
 open up firefox or chrome - probably not safari or ie or edge.
 
 `http://localhost:5173`
+
+## Test
+If you want to run tests you'll need [poetry](https://python-poetry.org/) and then you can just cd into visory and run
+```sh
+poetry run pytest
+```
